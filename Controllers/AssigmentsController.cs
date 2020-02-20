@@ -81,13 +81,14 @@ namespace PIN.Controllers
             var userID = userManager.GetUserId(User);
             var appUser = userManager.FindByIdAsync(userID).Result;
             var nrole = await roleManager.FindByIdAsync(role.Id);
+            string name = nrole.Name;
 
             if (ModelState.IsValid)
             {
                 var result = userManager.IsInRoleAsync(appUser, nrole.Name).Result;
-                if(result)
-                    await userManager.AddToRoleAsync(appUser, nrole.Name);
-
+                if(!result)
+                    await userManager.AddToRoleAsync(appUser, name);
+                
                 return RedirectToAction("Index");
             }
             else
