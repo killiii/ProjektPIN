@@ -1,0 +1,12 @@
+﻿@model MyIdentityRole
+@{
+    ViewData["Title"] = "Join";
+}
+
+<h1 class="bg-success text-white">Join an Assigment</h1>
+
+<form asp-area="" asp-controller="Assigments" asp-action="Join" method="post">
+  
+    <button type="submit" class="btn btn-primary">Join</button>
+    <a asp-area="" asp-controller="Assigments" asp-action="Index" class="btn btn-secondary">Back</a>
+</form>

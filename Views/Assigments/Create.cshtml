@@ -1,0 +1,19 @@
+﻿@model MyIdentityRole
+
+<h1 class="bg-info text-white">Create an Assigment</h1>
+
+
+
+<form asp-action="Create" method="post">
+    <div class="form-group">
+        <label for="Name">Name new assigment</label>
+        <input name="Name" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label for="Description">Add Description</label>
+        <input name="Description" class="form-control" />
+    </div>
+    <button type="submit" class="btn btn-primary">Create</button>
+    <a asp-action="Index" class="btn btn-secondary">Back</a>
+</form>
+

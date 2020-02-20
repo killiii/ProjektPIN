@@ -1,0 +1,51 @@
+﻿@model IEnumerable<MyIdentityRole>
+   
+
+        @foreach (MyIdentityRole item in Model)
+        {
+            if (!item.Name.Equals("Administrator"))
+            {
+                <div class="card" style="width: 20rem;">
+
+                    <div class="card-body">
+                        <h5 class="card-title">@Html.DisplayFor(modelItem => @item.Name)</h5>
+                        <p class="card-text">@Html.DisplayFor(modelItem => item.Description)</p>
+                        <div class="card-footer">
+                            <div style="margin-top:5px">
+                                <table>
+                                    <tr>
+                                        <td>
+                                            <form asp-controller="Assigments" asp-action="Join" asp-route-id="@item.Id" method="get">
+                                                <button type="submit" class="btn btn-sm btn-outline-info">
+                                                    Join
+                                                </button>
+                                            </form>
+                                        </td>
+                                        <td>
+                                            <form asp-controller="Assigments" asp-action="Leave" asp-route-id="@item.Id" method="post">
+                                                <button type="submit" class="btn btn-sm btn-outline-dark">
+                                                    Leave
+                                                </button>
+                                            </form>
+                                        </td>
+                                        <td>
+                                            <form asp-action="Delete" asp-route-id="@item.Id" method="post">
+                                                <button type="submit" class="btn btn-sm btn-danger">
+                                                    Delete
+                                                </button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+        <form style="margin-top:20px" asp-controller="Assigments" asp-action="Create" asp-route-id="" method="get">
+            <button type="submit" class="btn btn-group-lg btn-outline-success">
+                Create a new assigment
+            </button>
+        </form>
+
